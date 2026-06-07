@@ -27,11 +27,8 @@ export default function HeroParallax() {
         />
       </div>
 
-      {/* Овца — мобиле сверху, десктоп снизу */}
-      <div
-        className="absolute right-0 top-[30%] h-[65%] sm:top-auto sm:bottom-[60px] sm:h-[82%]"
-        style={{ transform: `translateX(-80px)` }}
-      >
+      {/* Овца */}
+      <div className="absolute left-1/2 -translate-x-1/2 top-[48%] h-[44%] sm:left-auto sm:right-0 sm:-translate-x-20 sm:top-auto sm:bottom-[60px] sm:h-[82%]">
         <Image
           src="/images/cover1.png"
           alt="Черноголовая овца"
