@@ -27,14 +27,14 @@ export default function HeroParallax() {
         />
       </div>
 
-      {/* Овца */}
-      <div className="absolute left-1/2 -translate-x-1/2 top-[48%] h-[44%] sm:left-auto sm:right-0 sm:-translate-x-20 sm:top-auto sm:bottom-[60px] sm:h-[82%]">
+      {/* Овца — только десктоп */}
+      <div className="hidden sm:block absolute right-0 bottom-[60px] h-[82%] -translate-x-20">
         <Image
           src="/images/cover1.png"
           alt="Черноголовая овца"
           width={1200}
           height={1200}
-          className="h-full w-auto object-contain object-top sm:object-bottom"
+          className="h-full w-auto object-contain object-bottom"
           priority
         />
       </div>

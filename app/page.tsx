@@ -51,7 +51,7 @@ export default function Home() {
         <div style={{ background: "radial-gradient(ellipse at 20% 50%, #f0e0cc 0%, #f7ede4 45%, #faf9f5 80%)" }}>
 
         {/* 1. Hero */}
-        <section className="relative overflow-hidden" style={{ height: "90vh", minHeight: "600px" }}>
+        <section className="relative overflow-hidden sm:overflow-hidden" style={{ height: "90vh", minHeight: "600px" }}>
 
           {/* Параллакс — облака и овца */}
           <HeroParallax />
@@ -72,6 +72,18 @@ export default function Home() {
                 Связаться с фермой
               </a>
             </div>
+          </div>
+
+          {/* Мобильная овца — между карточкой и строкой */}
+          <div className="sm:hidden absolute left-0 right-0 bottom-[56px] flex justify-center z-10">
+            <Image
+              src="/images/cover1.png"
+              alt="Черноголовая овца"
+              width={1200}
+              height={1200}
+              className="w-[260px] object-contain object-bottom"
+              priority
+            />
           </div>
 
           {/* Бегущая строка — внизу hero */}
