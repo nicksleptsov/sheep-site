@@ -29,7 +29,7 @@ export default function HeroParallax() {
 
       {/* Овца — без параллакса, фиксирована */}
       <div
-        className="absolute h-[95%] sm:h-[82%]"
+        className="absolute h-[55%] sm:h-[82%]"
         style={{ transform: `translateX(-80px)`, willChange: "transform", right: 0, bottom: "60px" }}
       >
         <Image
