@@ -72,7 +72,7 @@ export default function Home() {
           </div>
           {/* Овца — занимает всё оставшееся место */}
           <div className="relative z-10 flex-1 flex items-center justify-center overflow-hidden">
-            <Image src="/images/cover1.png" alt="Черноголовая овца" width={1200} height={1200} className="h-[130%] w-auto object-contain object-center -translate-x-16 -translate-y-8" priority />
+            <Image src="/images/cover1.png" alt="Черноголовая овца" width={1200} height={1200} className="h-[145%] w-auto object-contain object-bottom -translate-x-16" priority />
           </div>
           {/* Бегущая строка */}
           <div className="relative z-20 bg-[#cc785c] overflow-hidden py-4 shrink-0">
