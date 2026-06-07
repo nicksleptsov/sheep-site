@@ -50,14 +50,46 @@ export default function Home() {
         {/* Градиентная обёртка: Hero + О ферме + Строка */}
         <div style={{ background: "radial-gradient(ellipse at 20% 50%, #f0e0cc 0%, #f7ede4 45%, #faf9f5 80%)" }}>
 
-        {/* 1. Hero */}
-        <section className="relative overflow-hidden sm:overflow-hidden" style={{ height: "90vh", minHeight: "600px" }}>
+        {/* 1. Hero — МОБИЛЕ */}
+        <div className="sm:hidden flex flex-col relative" style={{ height: "calc(100vh - 80px)" }}>
+          {/* Фон */}
+          <div className="absolute inset-0">
+            <Image src="/images/cover2.png" alt="" fill className="object-cover object-center" priority />
+          </div>
+          {/* Карточка */}
+          <div className="relative z-10 p-4 pt-6 shrink-0">
+            <div className="rounded-3xl bg-white/70 backdrop-blur-xl p-6 flex flex-col text-left">
+              <h1 className="font-display font-black text-[36px] leading-[1.1] tracking-[-0.02em] text-[#141413] mb-3">
+                Черноголовая овца
+              </h1>
+              <p className="text-[#3d3d3a] text-[14px] leading-[1.6] mb-4">
+                Племенное поголовье и свежее мясо от фермерского хозяйства в Коломне
+              </p>
+              <a href="#contact" className="inline-flex items-center justify-center bg-[#cc785c] hover:bg-[#a9583e] text-white text-[14px] font-medium px-5 py-2 rounded-full transition-colors self-start">
+                Связаться с фермой
+              </a>
+            </div>
+          </div>
+          {/* Овца — занимает всё оставшееся место */}
+          <div className="relative z-10 flex-1 flex items-end justify-center overflow-hidden">
+            <Image src="/images/cover1.png" alt="Черноголовая овца" width={1200} height={1200} className="h-full w-auto object-contain object-bottom" priority />
+          </div>
+          {/* Бегущая строка */}
+          <div className="relative z-20 bg-[#cc785c] overflow-hidden py-4 shrink-0">
+            <div className="animate-marquee flex whitespace-nowrap w-max">
+              {Array.from({ length: 20 }).map((_, i) => (
+                <span key={i} className="inline-flex items-center font-display font-black uppercase tracking-[0.05em] text-white text-[17px]">
+                  Калининградская селекция<span className="mx-12" />
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
 
-          {/* Параллакс — облака и овца */}
+        {/* 1. Hero — ДЕСКТОП */}
+        <section className="hidden sm:block relative overflow-hidden" style={{ height: "90vh", minHeight: "600px" }}>
           <HeroParallax />
-
-          {/* Текст слева */}
-          <div className="relative h-full flex items-start sm:items-center pt-8 sm:pt-0 px-4 sm:px-48">
+          <div className="relative h-full flex items-center px-48">
             <div className="rounded-3xl bg-white/70 backdrop-blur-xl p-8 w-[360px] flex flex-col text-left">
               <h1 className="font-display font-black text-[40px] leading-[1.1] tracking-[-0.02em] text-[#141413] mb-3">
                 Черноголовая овца
@@ -65,39 +97,20 @@ export default function Home() {
               <p className="text-[#3d3d3a] text-[15px] leading-[1.6] mb-5">
                 Племенное поголовье и свежее мясо от фермерского хозяйства в Коломне
               </p>
-              <a
-                href="#contact"
-                className="inline-flex items-center justify-center bg-[#cc785c] hover:bg-[#a9583e] text-white text-[14px] font-medium px-5 py-2 rounded-full transition-colors self-start"
-              >
+              <a href="#contact" className="inline-flex items-center justify-center bg-[#cc785c] hover:bg-[#a9583e] text-white text-[14px] font-medium px-5 py-2 rounded-full transition-colors self-start">
                 Связаться с фермой
               </a>
             </div>
           </div>
-
-          {/* Мобильная овца — между карточкой и строкой */}
-          <div className="sm:hidden absolute left-0 right-0 bottom-[56px] flex justify-center z-10">
-            <Image
-              src="/images/cover1.png"
-              alt="Черноголовая овца"
-              width={1200}
-              height={1200}
-              className="w-[260px] object-contain object-bottom"
-              priority
-            />
-          </div>
-
-          {/* Бегущая строка — внизу hero */}
           <div className="absolute bottom-0 left-0 right-0 bg-[#cc785c] overflow-hidden py-4 z-20">
             <div className="animate-marquee flex whitespace-nowrap w-max">
               {Array.from({ length: 20 }).map((_, i) => (
                 <span key={i} className="inline-flex items-center font-display font-black uppercase tracking-[0.05em] text-white text-[17px]">
-                  Калининградская селекция
-                  <span className="mx-12" />
+                  Калининградская селекция<span className="mx-12" />
                 </span>
               ))}
             </div>
           </div>
-
         </section>
 
         </div>{/* конец градиентной обёртки hero */}
