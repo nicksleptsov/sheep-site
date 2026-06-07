@@ -1,5 +1,7 @@
 import Image from "next/image";
 import BreedTabs from "./breed-tabs";
+import HeroParallax from "./hero-parallax";
+import ContactForm from "./contact-form";
 
 export default function Home() {
   return (
@@ -45,45 +47,55 @@ export default function Home() {
 
       <main className="text-[#141413]">
 
-        {/* 1. Hero — центрированный friendly landing */}
-        <section className="bg-[#faf9f5] pt-8 px-4">
+        {/* Градиентная обёртка: Hero + О ферме + Строка */}
+        <div style={{ background: "radial-gradient(ellipse at 20% 50%, #f0e0cc 0%, #f7ede4 45%, #faf9f5 80%)" }}>
 
-          {/* Текстовый блок по центру */}
-          <div className="max-w-3xl mx-auto text-center pb-14">
-            <h1 className="font-display font-black text-[40px] sm:text-[56px] leading-[1.1] tracking-[-0.02em] text-[#141413] mb-6">
-              Черноголовая овца калининградской селекции
-            </h1>
+        {/* 1. Hero */}
+        <section className="relative overflow-hidden" style={{ height: "90vh", minHeight: "600px" }}>
 
-            <p className="text-[#6c6a64] text-[20px] leading-[1.6] mb-10">
-              Продаём животных для разведения и фермерское мясо напрямую.
-            </p>
+          {/* Параллакс — облака и овца */}
+          <HeroParallax />
 
-            <a
-              href="#contact"
-              className="inline-flex items-center justify-center bg-[#141413] hover:bg-[#2e2c28] text-white text-[15px] font-medium px-8 py-3.5 rounded-full transition-colors"
-            >
-              Связаться с фермой
-            </a>
+          {/* Текст слева */}
+          <div className="relative h-full flex items-start sm:items-center pt-8 sm:pt-0 px-4 sm:px-48">
+            <div className="rounded-3xl bg-white/70 backdrop-blur-xl p-8 w-[360px] flex flex-col text-left">
+              <h1 className="font-display font-black text-[40px] leading-[1.1] tracking-[-0.02em] text-[#141413] mb-3">
+                Черноголовая овца
+              </h1>
+              <p className="text-[#3d3d3a] text-[15px] leading-[1.6] mb-5">
+                Племенное поголовье и свежее мясо от фермерского хозяйства в Коломне
+              </p>
+              <a
+                href="#contact"
+                className="inline-flex items-center justify-center bg-[#cc785c] hover:bg-[#a9583e] text-white text-[14px] font-medium px-5 py-2 rounded-full transition-colors self-start"
+              >
+                Связаться с фермой
+              </a>
+            </div>
           </div>
 
-          {/* Овечка по центру снизу */}
-          <div className="flex justify-center">
-            <Image
-              src="/images/shepp.png"
-              alt="Балтийская черноголовая овца"
-              width={1261}
-              height={1368}
-              className="w-[200px] sm:w-[280px] object-contain"
-              priority
-            />
+          {/* Бегущая строка — внизу hero */}
+          <div className="absolute bottom-0 left-0 right-0 bg-[#cc785c] overflow-hidden py-4 z-20">
+            <div className="animate-marquee flex whitespace-nowrap w-max">
+              {Array.from({ length: 20 }).map((_, i) => (
+                <span key={i} className="inline-flex items-center font-display font-black uppercase tracking-[0.05em] text-white text-[17px]">
+                  Калининградская селекция
+                  <span className="mx-12" />
+                </span>
+              ))}
+            </div>
           </div>
 
         </section>
 
+        </div>{/* конец градиентной обёртки hero */}
+        {/* Градиент под О ферме + Что продаём */}
+        <div style={{ background: "radial-gradient(ellipse at 80% 30%, #f0e0cc 0%, #f7ede4 45%, #faf9f5 80%)" }}>
+
         {/* 2. О ферме */}
-        <section id="about" className="bg-[#faf9f5] py-20 px-4">
+        <section id="about" className="pt-20 pb-8 px-4">
           <div className="max-w-5xl mx-auto">
-            <div className="bg-white rounded-3xl border border-[#e6dfd8] p-10 sm:p-14">
+            <div className="bg-white/70 backdrop-blur-xl rounded-3xl border border-white/80 shadow-[0_8px_32px_rgba(200,180,160,0.15)] p-10 sm:p-14">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-12">
                 {/* Левая колонка */}
                 <div className="flex flex-col">
@@ -95,7 +107,7 @@ export default function Home() {
                   </p>
                   <a
                     href="#contacts"
-                    className="inline-flex items-center justify-center self-start bg-[#141413] hover:bg-[#2e2c28] text-white text-[14px] font-medium px-6 py-2.5 rounded-full transition-colors"
+                    className="inline-flex items-center justify-center self-center sm:self-start bg-[#141413] hover:bg-[#2e2c28] text-white text-[14px] font-medium px-6 py-2.5 rounded-full transition-colors"
                   >
                     Узнать о ферме
                   </a>
@@ -121,12 +133,12 @@ export default function Home() {
         </section>
 
         {/* 3. Что продаём */}
-        <section id="products" className="bg-[#f5f0e8] py-20 px-4">
+        <section id="products" className="pt-4 pb-16 px-4">
           <div className="max-w-5xl mx-auto">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
 
               {/* 01 — Овцы */}
-              <div className="group bg-[#ece8e1] border border-[#ece8e1] rounded-2xl p-10 flex flex-col transition-all duration-300 ease-out hover:bg-white hover:-translate-y-2 hover:border-[#c4b9a8] hover:shadow-[0_20px_48px_rgba(20,20,19,0.12),0_4px_12px_rgba(20,20,19,0.06)]">
+              <div className="group bg-white/70 backdrop-blur-xl border border-white/60 rounded-2xl p-10 flex flex-col transition-all duration-300 ease-out hover:bg-white/90 hover:-translate-y-2 hover:shadow-[0_20px_48px_rgba(20,20,19,0.10),0_4px_12px_rgba(20,20,19,0.05)]">
                 <div className="flex items-center gap-3 mb-4">
                   <span className="font-display font-black text-[22px] text-[#141413]">01</span>
                   <span className="font-display font-bold text-[15px] tracking-[0.1em] uppercase text-[#8e8b82]">Живой скот</span>
@@ -138,12 +150,12 @@ export default function Home() {
                 <p className="text-[15px] text-[#8e8b82] mb-6">Племенные бараны, матки и молодняк</p>
                 <ul className="space-y-2 mb-6">
                   {[
-                    "выраженные мясные формы",
-                    "скороспелость и быстрый набор веса",
-                    "спокойный характер, хороший иммунитет",
-                    "адаптация к условиям Центральной России",
+                    "Выраженные мясные формы",
+                    "Скороспелость (быстрый набор веса)",
+                    "Спокойный характер, хороший иммунитет",
+                    "Адаптация к условиям Центральной России",
                   ].map((item) => (
-                    <li key={item} className="flex items-start gap-2 text-[16px] text-[#3d3d3a] leading-[1.6]">
+                    <li key={item} className="flex items-start gap-2 text-[16px] text-[#6c6a64] leading-[1.6]">
                       <span className="w-2 h-2 rounded-full bg-[#c4997e] shrink-0 mt-[5px]" />
                       <span>{item}</span>
                     </li>
@@ -154,7 +166,7 @@ export default function Home() {
               </div>
 
               {/* 02 — Мясо */}
-              <div className="group bg-[#ece8e1] border border-[#ece8e1] rounded-2xl p-10 flex flex-col transition-all duration-300 ease-out hover:bg-white hover:-translate-y-2 hover:border-[#c4b9a8] hover:shadow-[0_20px_48px_rgba(20,20,19,0.12),0_4px_12px_rgba(20,20,19,0.06)]">
+              <div className="group bg-white/70 backdrop-blur-xl border border-white/60 rounded-2xl p-10 flex flex-col transition-all duration-300 ease-out hover:bg-white/90 hover:-translate-y-2 hover:shadow-[0_20px_48px_rgba(20,20,19,0.10),0_4px_12px_rgba(20,20,19,0.05)]">
                 <div className="flex items-center gap-3 mb-4">
                   <span className="font-display font-black text-[22px] text-[#141413]">02</span>
                   <span className="font-display font-bold text-[15px] tracking-[0.1em] uppercase text-[#8e8b82]">Мясо</span>
@@ -166,11 +178,11 @@ export default function Home() {
                 <p className="text-[15px] text-[#8e8b82] mb-6">Свежая баранина напрямую с фермы</p>
                 <ul className="space-y-2 mb-6">
                   {[
-                    "туши целиком",
-                    "разделка по частям",
-                    "подбор под ваш запрос",
+                    "Туши целиком",
+                    "Разделка по частям",
+                    "Подбор под ваш запрос",
                   ].map((item) => (
-                    <li key={item} className="flex items-start gap-2 text-[16px] text-[#3d3d3a] leading-[1.6]">
+                    <li key={item} className="flex items-start gap-2 text-[16px] text-[#6c6a64] leading-[1.6]">
                       <span className="w-2 h-2 rounded-full bg-[#c4997e] shrink-0 mt-[5px]" />
                       <span>{item}</span>
                     </li>
@@ -184,22 +196,28 @@ export default function Home() {
           </div>
         </section>
 
+        </div>{/* конец градиента О ферме + Что продаём */}
+
         {/* 4. Почему порода — dark premium */}
         <section id="breed" className="bg-[#181715] py-20 px-4">
           <div className="max-w-5xl mx-auto">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-12 items-start">
               <div className="flex items-center justify-center pt-10">
-                <Image
-                  src="/images/sheep2.png"
-                  alt="Черноголовая овца калининградской селекции"
-                  width={800}
-                  height={800}
-                  className="w-full max-w-xs object-contain"
-                />
+                <video
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full max-w-sm object-contain"
+                  style={{ background: "transparent", mixBlendMode: "screen" }}
+                >
+                  <source src="/images/sheepvideo_safari_small.mov" type="video/mp4; codecs=hvc1" />
+                  <source src="/images/sheepvideo_final.webm" type="video/webm" />
+                </video>
               </div>
               <div>
                 <h2 className="font-display font-black text-[28px] sm:text-[40px] leading-[1.15] tracking-[-0.015em] text-[#faf9f5] mb-5">
-                  Черноголовая овца калининградской селекции
+                  Черноголовая овца Калининградской селекции
                 </h2>
                 <p className="text-[#a09d96] text-[16px] leading-[1.55] mb-10">
                   Порода отличается выраженными мясными формами и скороспелостью. Хороший иммунитет, спокойный характер, зимостойкость. Мясо — диетическое, без специфического вкуса и запаха.
@@ -210,10 +228,13 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Градиент Преимущества + Как купить */}
+        <div style={{ background: "radial-gradient(ellipse at 30% 30%, #f0e0cc 0%, #f7ede4 45%, #faf9f5 80%)" }}>
+
         {/* 5. Преимущества — canvas */}
-        <section className="bg-[#faf9f5] py-20 px-4">
+        <section className="pt-20 pb-8 px-4">
           <div className="max-w-5xl mx-auto">
-            <h2 className="font-display text-[28px] sm:text-[40px] font-normal leading-[1.15] tracking-[-0.015em] text-[#141413] mb-12 max-w-xl">
+            <h2 className="font-display text-[28px] sm:text-[40px] font-normal leading-[1.15] tracking-[-0.015em] text-[#141413] mb-12">
               Преимущества
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -224,10 +245,10 @@ export default function Home() {
                 "Флегматичный характер, нет агрессии",
                 "Хороший иммунитет, развитый материнский инстинкт",
                 "Круглогодичное содержание на открытом воздухе",
-                "Полиэстричность — охота круглый год",
+                "Полиэстричность — способность входить в охоту, оплодотворяться круглый год",
                 "Адаптированы к климату Калининграда и центральной России",
               ].map((item) => (
-                <div key={item} className="flex items-center gap-4 bg-[#efe9de] border border-[#e6dfd8] rounded-xl px-6 py-5">
+                <div key={item} className="flex items-center gap-4 bg-white/70 backdrop-blur-xl border border-white/60 rounded-xl px-6 py-5">
                   <span className="w-2 h-2 rounded-full bg-[#cc785c] shrink-0" />
                   <span className="text-[#3d3d3a] text-[17px] leading-[1.55]">{item}</span>
                 </div>
@@ -237,7 +258,7 @@ export default function Home() {
         </section>
 
         {/* 6. Как купить */}
-        <section id="how" className="bg-[#f5f0e8] py-20 px-4">
+        <section id="how" className="pt-8 pb-20 px-4">
           <div className="max-w-5xl mx-auto">
             <h2 className="font-display text-[28px] sm:text-[40px] font-normal leading-[1.15] tracking-[-0.015em] text-[#141413] mb-12 max-w-xl">
               Как купить
@@ -249,16 +270,21 @@ export default function Home() {
                 { step: "03", text: <>Согласовываем конкретное животное или объём</>,                          bg: "bg-[#a09278]", text_color: "text-[#faf9f5]",    num_color: "text-white/50" },
                 { step: "04", text: <>Подбираем удобные дату и время самовывоза</>,                          bg: "bg-[#c8bfb2]", text_color: "text-[#3d3d3a]",    num_color: "text-[#6c6a64]" },
               ].map((item, i, arr) => (
-                <div key={item.step} className="flex sm:contents">
-                  <div className={`${item.bg} rounded-2xl p-7 flex flex-col flex-1 relative overflow-hidden`}>
+                <div key={item.step} className="flex flex-col sm:contents">
+                  <div className={`${item.bg} rounded-2xl p-7 flex flex-col flex-1 relative overflow-hidden min-h-[120px] sm:min-h-0`}>
                     <span className="absolute -bottom-6 -right-2 font-display font-black text-[140px] leading-none select-none pointer-events-none opacity-10 text-current">
                       {parseInt(item.step)}
                     </span>
                     <p className={`${item.text_color} text-[17px] leading-[1.55] relative`}>{item.text}</p>
                   </div>
                   {i < arr.length - 1 && (
-                    <div className="flex items-center justify-center py-2 sm:py-0 sm:px-1 shrink-0 self-center">
-                      <svg className="rotate-90 sm:rotate-0" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <div className="flex items-center justify-center py-3 sm:py-0 sm:px-1 shrink-0 sm:self-center">
+                      {/* Мобиле — вниз */}
+                      <svg className="sm:hidden" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 5v14M12 19l-5-5M12 19l5-5" stroke="#8e8b82" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                      {/* Десктоп — вправо */}
+                      <svg className="hidden sm:block" width="24" height="24" viewBox="0 0 24 24" fill="none">
                         <path d="M5 12h14M14 7l5 5-5 5" stroke="#8e8b82" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                       </svg>
                     </div>
@@ -269,6 +295,7 @@ export default function Home() {
           </div>
         </section>
 
+        </div>{/* конец градиента Преимущества + Как купить */}
 
         {/* 8. Coral CTA */}
         <section className="bg-[#cc785c] py-10 px-4 overflow-hidden">
@@ -302,99 +329,56 @@ export default function Home() {
         </section>
 
         {/* 9. Форма — canvas */}
-        <section id="contact" className="bg-[#faf9f5] py-20 px-4">
+        <section id="contact" className="py-20 px-4" style={{ background: "radial-gradient(ellipse at 20% 50%, #f5e8dc 0%, #f8f0ea 55%, #faf9f5 85%)" }}>
           <div className="max-w-lg mx-auto">
             <h2 className="font-display text-[28px] sm:text-[40px] font-normal leading-[1.15] tracking-[-0.015em] text-[#141413] mb-2">
               Оставить заявку
             </h2>
             <p className="text-[#6c6a64] text-[15px] mb-8 leading-[1.55]">
-              Заполните форму — свяжемся в течение дня.
+              Заполните форму — свяжемся в течение дня
             </p>
-            <form className="bg-white border border-[#e6dfd8] rounded-xl p-6 sm:p-8 space-y-5">
-              {[
-                { label: "Ваше имя",  type: "text",  placeholder: "Иван" },
-                { label: "Телефон",   type: "tel",   placeholder: "+7 (___) ___-__-__" },
-              ].map((f) => (
-                <div key={f.label}>
-                  <label className="block font-display font-bold text-[11px] tracking-[0.08em] uppercase text-[#6c6a64] mb-2">
-                    {f.label}
-                  </label>
-                  <input
-                    type={f.type}
-                    placeholder={f.placeholder}
-                    className="w-full border border-[#e6dfd8] rounded-lg px-[14px] h-10 text-[15px] text-[#141413] bg-[#faf9f5] focus:outline-none focus:border-[#cc785c] transition-colors"
-                  />
-                </div>
-              ))}
-              <div>
-                <label className="block font-display font-bold text-[11px] tracking-[0.08em] uppercase text-[#6c6a64] mb-2">
-                  Что вас интересует?
-                </label>
-                <select className="w-full border border-[#e6dfd8] rounded-lg px-[14px] h-10 text-[15px] text-[#141413] bg-[#faf9f5] focus:outline-none focus:border-[#cc785c] transition-colors">
-                  <option value="">Выберите...</option>
-                  <option value="sheep">Живые овцы</option>
-                  <option value="meat">Фермерское мясо</option>
-                  <option value="consult">Консультация</option>
-                </select>
-              </div>
-              <div>
-                <label className="block font-display font-bold text-[11px] tracking-[0.08em] uppercase text-[#6c6a64] mb-2">
-                  Комментарий
-                </label>
-                <textarea
-                  placeholder="Количество, пожелания, вопросы..."
-                  rows={3}
-                  className="w-full border border-[#e6dfd8] rounded-lg px-[14px] py-[10px] text-[15px] text-[#141413] bg-[#faf9f5] focus:outline-none focus:border-[#cc785c] transition-colors resize-none"
-                />
-              </div>
-              <button
-                type="submit"
-                className="w-full bg-[#cc785c] hover:bg-[#a9583e] text-white text-[14px] font-medium py-3 rounded-full transition-colors"
-              >
-                Отправить заявку
-              </button>
-            </form>
+            <ContactForm />
           </div>
         </section>
 
         {/* 10. Контакты — white */}
-        <section id="contacts" className="bg-white py-20 px-4">
+        <section id="contacts" className="bg-[#181715] py-20 px-4">
           <div className="max-w-5xl mx-auto">
-            <h2 className="font-display text-[28px] sm:text-[40px] font-normal leading-[1.15] tracking-[-0.015em] text-[#141413] mb-10">
+            <h2 className="font-display text-[28px] sm:text-[40px] font-normal leading-[1.15] tracking-[-0.015em] text-[#faf9f5] mb-10">
               Контакты
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-              <div className="divide-y divide-[#ebe6df]">
+              <div className="divide-y divide-[#2e2c28]">
                 {[
                   { label: "Телефон",      value: "+7 (925) 161-86-33" },
-                  { label: "Адрес фермы", value: "Московская область, городской округ Коломна,\nквартал № 0050117" },
+                  { label: "Адрес фермы", value: "Московская область, городской округ Коломна,\nквартал № 0050117, д. 1" },
                   { label: "Время работы", value: "Ежедневно с 09:00 до 18:00" },
                 ].map((item) => (
                   <div key={item.label} className="py-5">
-                    <p className="font-display text-[11px] font-bold tracking-[0.08em] uppercase text-[#8e8b82] mb-1">
+                    <p className="font-display text-[11px] font-bold tracking-[0.08em] uppercase text-[#6c6a64] mb-1">
                       {item.label}
                     </p>
-                    <p className="text-[#252523] font-medium text-[15px] whitespace-pre-line">{item.value}</p>
+                    <p className="text-[#a09d96] font-medium text-[15px] whitespace-pre-line">{item.value}</p>
                   </div>
                 ))}
                 <div className="py-5">
-                  <p className="font-display text-[11px] font-bold tracking-[0.08em] uppercase text-[#8e8b82] mb-1">
+                  <p className="font-display text-[11px] font-bold tracking-[0.08em] uppercase text-[#6c6a64] mb-1">
                     Соцсети
                   </p>
                   <a
                     href="https://vk.com/ovechki_podluzhya"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-[#252523] hover:text-[#cc785c] font-medium text-[15px] transition-colors"
+                    className="inline-flex items-center gap-2 text-[#a09d96] hover:text-[#faf9f5] font-medium text-[15px] transition-colors"
                   >
                     <Image src="/images/VK Logo.png" alt="VK" width={20} height={20} className="rounded-sm" />
                     Сообщество VK
                   </a>
                 </div>
               </div>
-              <div className="rounded-xl overflow-hidden border border-[#e6dfd8] min-h-56">
+              <div className="rounded-xl overflow-hidden border border-[#2e2c28] min-h-56">
                 <iframe
-                  src="https://yandex.ru/map-widget/v1/?ll=38.731834%2C55.194532&z=15&pt=38.731834%2C55.194532%2Cpm2rdm"
+                  src="https://yandex.ru/map-widget/v1/?ll=38.731841%2C55.194527&z=15&pt=38.731841%2C55.194527%2Cpm2rdm"
                   width="100%"
                   height="280"
                   frameBorder="0"

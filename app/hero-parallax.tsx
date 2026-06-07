@@ -1,0 +1,46 @@
+"use client";
+import { useEffect, useState } from "react";
+import Image from "next/image";
+
+export default function HeroParallax() {
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  return (
+    <>
+      {/* Фон — cover2.png (медленно уходит вверх) */}
+      <div
+        className="absolute inset-0"
+        style={{ transform: `translateY(${scrollY * 0.3}px)`, willChange: "transform" }}
+      >
+        <Image
+          src="/images/cover2.png"
+          alt=""
+          fill
+          className="object-cover object-center"
+          priority
+        />
+      </div>
+
+      {/* Овца — без параллакса, фиксирована */}
+      <div
+        className="absolute h-[95%] sm:h-[82%]"
+        style={{ transform: `translateX(-80px)`, willChange: "transform", right: 0, bottom: "60px" }}
+      >
+        <Image
+          src="/images/cover1.png"
+          alt="Черноголовая овца"
+          width={1200}
+          height={1200}
+          className="h-full w-auto object-contain object-bottom"
+          priority
+        />
+      </div>
+    </>
+  );
+}
