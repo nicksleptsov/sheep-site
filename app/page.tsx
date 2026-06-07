@@ -63,7 +63,7 @@ export default function Home() {
                 Черноголовая овца
               </h1>
               <p className="text-[#3d3d3a] text-[14px] leading-[1.6] mb-4">
-                Племенное поголовье и свежее мясо от фермерского хозяйства в Коломне
+                Племенное поголовье и свежее мясо<br />от фермерского хозяйства в Коломне
               </p>
               <a href="#contact" className="inline-flex items-center justify-center bg-[#cc785c] hover:bg-[#a9583e] text-white text-[14px] font-medium px-5 py-2 rounded-full transition-colors self-start">
                 Связаться с фермой
