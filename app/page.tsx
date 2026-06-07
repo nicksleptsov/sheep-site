@@ -57,7 +57,7 @@ export default function Home() {
             <Image src="/images/cover2.png" alt="" fill className="object-cover object-center" priority />
           </div>
           {/* Карточка */}
-          <div className="relative z-10 p-4 pt-6 shrink-0">
+          <div className="relative z-10 p-4 pt-10 shrink-0">
             <div className="rounded-3xl bg-white/70 backdrop-blur-xl p-6 flex flex-col text-left">
               <h1 className="font-display font-black text-[36px] leading-[1.1] tracking-[-0.02em] text-[#141413] mb-3">
                 Черноголовая овца
@@ -72,7 +72,7 @@ export default function Home() {
           </div>
           {/* Овца — занимает всё оставшееся место */}
           <div className="relative z-10 flex-1 flex items-center justify-center overflow-hidden">
-            <Image src="/images/cover1.png" alt="Черноголовая овца" width={1200} height={1200} className="h-[115%] w-auto object-contain object-bottom -translate-x-16" priority />
+            <Image src="/images/cover1.png" alt="Черноголовая овца" width={1200} height={1200} className="h-[130%] w-auto object-contain object-center -translate-x-16 -translate-y-8" priority />
           </div>
           {/* Бегущая строка */}
           <div className="relative z-20 bg-[#cc785c] overflow-hidden py-4 shrink-0">
