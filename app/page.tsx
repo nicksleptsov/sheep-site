@@ -51,7 +51,7 @@ export default function Home() {
         <div style={{ background: "radial-gradient(ellipse at 20% 50%, #f0e0cc 0%, #f7ede4 45%, #faf9f5 80%)" }}>
 
         {/* 1. Hero — МОБИЛЕ */}
-        <div className="sm:hidden flex flex-col relative" style={{ height: "calc(100vh - 80px)" }}>
+        <div className="sm:hidden flex flex-col relative" style={{ height: "calc(100dvh - 80px)" }}>
           {/* Фон */}
           <div className="absolute inset-0">
             <Image src="/images/cover2.png" alt="" fill className="object-cover object-center" priority />
@@ -71,7 +71,7 @@ export default function Home() {
             </div>
           </div>
           {/* Овца — занимает всё оставшееся место */}
-          <div className="relative z-10 flex-1 flex items-end justify-center overflow-hidden">
+          <div className="relative z-10 flex-1 flex items-center justify-center overflow-hidden">
             <Image src="/images/cover1.png" alt="Черноголовая овца" width={1200} height={1200} className="h-full w-auto object-contain object-bottom" priority />
           </div>
           {/* Бегущая строка */}
