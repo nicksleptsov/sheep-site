@@ -19,7 +19,7 @@ export default function HeroParallax() {
         style={{ transform: `translateY(${scrollY * 0.3}px)`, willChange: "transform" }}
       >
         <Image
-          src="/images/cover2.png"
+          src="/images/cover2-v2.png"
           alt=""
           fill
           className="object-cover object-center"

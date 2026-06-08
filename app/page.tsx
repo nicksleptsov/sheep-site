@@ -54,7 +54,7 @@ export default function Home() {
         <div className="sm:hidden flex flex-col relative" style={{ height: "calc(100dvh - 80px)" }}>
           {/* Фон */}
           <div className="absolute inset-0">
-            <Image src="/images/cover2.png" alt="" fill className="object-cover object-center" priority />
+            <Image src="/images/cover2-v2.png" alt="" fill className="object-cover object-center" priority />
           </div>
           {/* Карточка */}
           <div className="relative z-10 p-4 pt-10 shrink-0">
@@ -342,7 +342,7 @@ export default function Home() {
               </div>
               <div className="flex justify-center items-end">
                 <Image
-                  src="/images/sheep3.png"
+                  src="/images/sheep3-v2.png"
                   alt="Овца"
                   width={600}
                   height={600}
