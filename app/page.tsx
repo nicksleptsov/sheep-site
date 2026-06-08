@@ -102,7 +102,7 @@ export default function Home() {
               </a>
             </div>
           </div>
-          <div className="absolute bottom-0 left-0 right-0 bg-[#cc785c] overflow-hidden py-4 z-20">
+          <div className="absolute bottom-0 left-0 right-0 h-14 flex items-center bg-[#cc785c] overflow-hidden z-20">
             <div className="animate-marquee flex whitespace-nowrap w-max">
               {Array.from({ length: 20 }).map((_, i) => (
                 <span key={i} className="inline-flex items-center font-display font-black uppercase tracking-[0.05em] text-white text-[17px]">

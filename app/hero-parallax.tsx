@@ -28,7 +28,7 @@ export default function HeroParallax() {
       </div>
 
       {/* Овца — только десктоп */}
-      <div className="hidden sm:block absolute right-0 bottom-0 h-[82%] -translate-x-20">
+      <div className="hidden sm:block absolute right-0 bottom-14 h-[82%] -translate-x-20">
         <Image
           src="/images/cover1.png"
           alt="Черноголовая овца"
