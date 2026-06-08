@@ -95,7 +95,7 @@ export default function ContactForm() {
         {status === "loading" ? "Отправляем..." : "Отправить заявку"}
       </button>
       {status === "success" && (
-        <p className="text-green-600 text-[14px] font-bold text-center">Ваша заявка отправлена!</p>
+        <p className="font-display font-bold text-[14px] text-green-600 text-center">Ваша заявка отправлена!</p>
       )}
       {status === "error" && (
         <p className="text-red-500 text-[14px] text-center">Ошибка отправки. Позвоните нам напрямую.</p>
