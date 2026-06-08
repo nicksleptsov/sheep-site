@@ -3,6 +3,14 @@ import BreedTabs from "./breed-tabs";
 import HeroParallax from "./hero-parallax";
 import ContactForm from "./contact-form";
 
+const marqueePhrases = [
+  "Калининградская селекция",
+  "Ферма в Коломне",
+  "Черноголовая овца",
+  "Живой скот",
+  "Свежее мясо",
+];
+
 export default function Home() {
   return (
     <>
@@ -77,11 +85,13 @@ export default function Home() {
           {/* Бегущая строка */}
           <div className="relative z-20 bg-[#cc785c] overflow-hidden py-4 shrink-0">
             <div className="animate-marquee flex whitespace-nowrap w-max">
-              {Array.from({ length: 20 }).map((_, i) => (
-                <span key={i} className="inline-flex items-center font-display font-black uppercase tracking-[0.05em] text-white text-[17px]">
-                  Калининградская селекция<span className="mx-12" />
-                </span>
-              ))}
+              {Array.from({ length: 4 }).flatMap((_, i) =>
+                marqueePhrases.map((phrase, j) => (
+                  <span key={`${i}-${j}`} className="inline-flex items-center font-display font-black uppercase tracking-[0.05em] text-white text-[17px]">
+                    {phrase}<span className="mx-12" />
+                  </span>
+                ))
+              )}
             </div>
           </div>
         </div>
@@ -104,11 +114,13 @@ export default function Home() {
           </div>
           <div className="absolute bottom-0 left-0 right-0 h-14 flex items-center bg-[#cc785c] overflow-hidden z-20">
             <div className="animate-marquee flex whitespace-nowrap w-max">
-              {Array.from({ length: 20 }).map((_, i) => (
-                <span key={i} className="inline-flex items-center font-display font-black uppercase tracking-[0.05em] text-white text-[17px]">
-                  Калининградская селекция<span className="mx-12" />
-                </span>
-              ))}
+              {Array.from({ length: 4 }).flatMap((_, i) =>
+                marqueePhrases.map((phrase, j) => (
+                  <span key={`${i}-${j}`} className="inline-flex items-center font-display font-black uppercase tracking-[0.05em] text-white text-[17px]">
+                    {phrase}<span className="mx-12" />
+                  </span>
+                ))
+              )}
             </div>
           </div>
         </section>
